@@ -1,2 +1,3 @@
-# cloud
-Practica de Computación en la Nube
+# Practica en la Nube (Cloud)
+Practica de Computación en la Nube - MAQUILON MAGNO ACKSOHN ALBERTH
+
