@@ -8,7 +8,7 @@
 <body>
     <center><h1>Gestión de peliculas</h1></center>
     
-    <form action="insert">
+    <form id="form-cine">
         <p>Nombre Pelicula:</p>
     <br>
     <input type="text" placeholder="Ingrese el nombre de la pelicula" id="nombre">
@@ -41,6 +41,18 @@
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const productfrom = document.getElementById("form-cine");
+        productfrom.addEventListener("submit",async(e)=>{
+            e.preventDefault();
+            await addDoc(collection(db,"pelicula"),{
+                nombre: productfrom.nombre.value,
+                precio: productfrom.precio.value,
+                codigo: productfrom.codigo.value
+            });
+            productfrom.reset();
+        });
     </script>
 </body>
 
