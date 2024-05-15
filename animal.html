@@ -9,11 +9,11 @@
     <h1>Gestion de Animales</h1>
     <hr>
     <form id="form-animal">
-        <input type="text" id="nombre" placeholder="Ingrese el nombre del perro">
+        <input type="text" id="nombre" placeholder="Ingrese del nombre del perro">
         <input type="text" id="raza" placeholder="Ingrese la raza del perro">
         <input type="text" id="codigo" placeholder="Ingrese el codigo del perro">
         <button type="submit">Agregar animal</button>
-        <button><a href="index.html">Regresar</a></button>
+
     </form>
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -41,11 +41,11 @@
         animal.addEventListener("submit",async(e)=>{
             e.preventDefault();
             await addDoc(collection(db,"animal"),{
-                nombre: productfrom.nombre.value,
-                raza: productfrom.raza.value,
-                codigo: productfrom.codigo.value
+                nombre: animal.nombre.value,
+                raza: animal.raza.value,
+                codigo: animal.codigo.value
             });
-            productfrom.reset();
+            animal.reset();
         });
       </script>
     
