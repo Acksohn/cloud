@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guarderia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <center>
+<h1>Guarderia Baby Lion <img src="https://w7.pngwing.com/pngs/155/341/png-transparent-yellow-lion-lion-franklin-united-methodist-preschool-safari-baby-animals-mammal-image-file-formats-animals-thumbnail.png" alt=""></h1> 
+</center>
+    <form id="form-guarderia">
+                <label for="">Cedula del representante:</label>
+                <input type="number" id="cedulaPa" class="form-control" placeholder="Ingrese la cédula del Padre o de la Madre">
+                <br>
+                <label for="">Nombres del representante:</label>
+                <input type="text"  id="nombresPa" class="form-control" placeholder="Ingrese los nombres del Padre o de la Madre">
+                <br>
+                <label for="">Fecha de inscripción:</label>
+                <input type="date" id="fechaIns" class="form-control">
+                <br>
+                <br>
+                <label for="">Celular:</label>
+                <input type="number" id="celularPa" class="form-control" placeholder="Ingrese su número de contacto">
+                <br>
+                <label for="">Hora Entrada:</label>
+                <input type="time" id="horaEnt" class="form-control">
+                <br>
+                <label for="">Hora Salida:</label>
+                <input type="time" id="horaSal" class="form-control">
+                <br>
+                <label for="">Cedula del niño/a:</label>
+                <input type="number" id="cedulaNi" class="form-control" placeholder="Ingrese la cedula del niño/a">
+                <br>
+                <label for="">Nombres del niño/a:</label>
+                <input type="text" id="nombresNi" class="form-control" placeholder="Ingrese los nombres del niño/a">
+                <br>
+                <label for="">Fecha de nacimiento del niño/a:</label>
+                <input type="date" id="fechaNa" class="form-control">
+                <br>
+                <label for="">Información medica:</label>
+                <textarea name="" id="infoMed" class="form-control" placeholder="Detallar si el niño/a tiene algun problema o alergia a algo"></textarea>
+                <br> <br>
+                <button type="submit">Agregar registro</button>
+    </form>
+
+
+    <!-- Base de DATOS con FireBase-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import {getFirestore,collection,addDoc,onSnapshot,deleteDoc,doc} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyA1-hNnxu-I0vjNG4vbX4DCdMizGtAnAPc",
+          authDomain: "guarderia-69e62.firebaseapp.com",
+          projectId: "guarderia-69e62",
+          storageBucket: "guarderia-69e62.appspot.com",
+          messagingSenderId: "309992200625",
+          appId: "1:309992200625:web:253b3687b26a1a26550590"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    
+            const productfrom = document.getElementById("form-guarderia");
+            productfrom.addEventListener("submit",async(e)=>{
+                e.preventDefault();
+                await addDoc(collection(db,"ficha"),{
+                    cedulaNi: productfrom.cedulaNi.value,
+                    cedulaPa: productfrom.cedulaPa.value,
+                    celularPa: productfrom.celularPa,value,
+                    fechaIns: productfrom.fechaIns,value,
+                    fechaNa: productfrom.fechaNa.value,
+                    horaEnt: productfrom.horaEnt.value,
+                    horaSal: productfrom.horaSal.value,
+                    infoMed: productfrom.infoMed.value,
+                    nombresNi: productfrom.nombresNi.value,
+                    nombresPa: productfrom.nombresPa.value
+                });
+                productfrom.reset();
+            });
+      </script>
+</body>
+</html>
